@@ -18,4 +18,10 @@ router.post('/',
 router.get('/', 
     authMiddleware.authUserMiddleware, 
     foodController.getFoodItems);
+
+// GET /api/food/partner/:id [protected]
+router.get('/partner/:id',
+    authMiddleware.authUserMiddleware,
+    foodController.getFoodPartnerProfile);
+
 module.exports = router;

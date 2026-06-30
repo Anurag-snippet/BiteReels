@@ -1,4 +1,5 @@
 const foodModel = require('../models/food.model.js');
+const foodPartnerModel = require('../models/foodpartner.model.js');
 const storageService = require('../services/storage.services.js');
 const {v4: uuid} = require('uuid');
 
@@ -12,7 +13,7 @@ async function createFood(req, res) {
         name: req.body.name,
         description: req.body.description,
         video: fileUploadResult.url,
-        foodPartner: req.foodPartner._id
+        foodpartner: req.foodPartner._id
     });
 
     res.status(201).json({
@@ -30,7 +31,31 @@ async function getFoodItems(req, res) {
     });
 }
 
+async function getFoodPartnerProfile(req, res) {
+    try {
+        const partnerId = req.params.id;
+        const partner = await foodPartnerModel.findById(partnerId).select('-password');
+        if (!partner) {
+            return res.status(404).json({ message: 'Food Partner not found' });
+        }
+
+        const foodItems = await foodModel.find({ foodpartner: partnerId });
+
+        res.status(200).json({
+            message: "Food partner profile fetched successfully",
+            partner,
+            foodItems
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Server error",
+            error: error.message
+        });
+    }
+}
+
 module.exports = {
     createFood,
-    getFoodItems
-}
+    getFoodItems,
+    getFoodPartnerProfile
+}
