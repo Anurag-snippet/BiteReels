@@ -213,11 +213,21 @@ const Home = () => {
         }
     };
 
+    const handleTabClick = (tab) => {
+        if (activeTab === tab) {
+            setVideos([]);
+            fetchVideos(tab);
+        } else {
+            setVideos([]);
+            setActiveTab(tab);
+        }
+    };
+
     return (
         <div className="main-layout-container">
             {/* LEFT SIDEBAR NAVIGATION (Desktop & Tablet) */}
             <aside className="app-navigation-sidebar">
-                <div className="nav-brand" onClick={() => { setActiveTab('home'); setVideos([]); }}>
+                <div className="nav-brand" onClick={() => handleTabClick('home')}>
                     <span>🍔</span>
                     <span className="nav-brand-text">FoodView</span>
                 </div>
@@ -225,7 +235,7 @@ const Home = () => {
                 <div className="nav-items-group">
                     <button 
                         className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
-                        onClick={() => { setActiveTab('home'); setVideos([]); }}
+                        onClick={() => handleTabClick('home')}
                     >
                         <span className="nav-item-icon">🏠</span>
                         <span className="nav-item-text">Home Feed</span>
@@ -234,7 +244,7 @@ const Home = () => {
                     {session.loggedIn && session.role === 'user' && (
                         <button 
                             className={`nav-item ${activeTab === 'saved' ? 'active' : ''}`}
-                            onClick={() => { setActiveTab('saved'); setVideos([]); }}
+                            onClick={() => handleTabClick('saved')}
                         >
                             <span className="nav-item-icon">🔖</span>
                             <span className="nav-item-text">Saved Videos</span>
@@ -280,7 +290,7 @@ const Home = () => {
             <nav className="app-navigation-bottom">
                 <button 
                     className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
-                    onClick={() => { setActiveTab('home'); setVideos([]); }}
+                    onClick={() => handleTabClick('home')}
                 >
                     <span className="nav-item-icon">🏠</span>
                 </button>
@@ -288,7 +298,7 @@ const Home = () => {
                 {session.loggedIn && session.role === 'user' && (
                     <button 
                         className={`nav-item ${activeTab === 'saved' ? 'active' : ''}`}
-                        onClick={() => { setActiveTab('saved'); setVideos([]); }}
+                        onClick={() => handleTabClick('saved')}
                     >
                         <span className="nav-item-icon">🔖</span>
                     </button>
