@@ -136,7 +136,7 @@
     }
 
     .reel-content {
-        padding: 16px 12px 24px 12px;
+        padding: 16px 12px 80px 12px;
         gap: 10px;
     }
 }
@@ -154,7 +154,7 @@
     }
 
     .reel-content {
-        padding: 12px 10px 20px 10px;
+        padding: 12px 10px 80px 10px;
         gap: 8px;
     }
 }
