@@ -4,6 +4,73 @@ import '../../styles/navigation.css';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
+// Custom SVG Icons mimicking Instagram's premium line-art
+const HomeIcon = ({ active }) => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill={active ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+    </svg>
+);
+
+const SavedIcon = ({ active }) => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill={active ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+    </svg>
+);
+
+const HeartIcon = ({ filled }) => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </svg>
+);
+
+const CommentIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+    </svg>
+);
+
+const PlusIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+        <line x1="12" y1="8" x2="12" y2="16" />
+        <line x1="8" y1="12" x2="16" y2="12" />
+    </svg>
+);
+
+const LogoutIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+        <polyline points="16 17 21 12 16 7" />
+        <line x1="21" y1="12" x2="9" y2="12" />
+    </svg>
+);
+
+const StoreIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 9l1-5h16l1 5" />
+        <path d="M3 9v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9" />
+        <path d="M9 22V12h6v10" />
+    </svg>
+);
+
+const UserIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
+    </svg>
+);
+
+const LogoIcon = () => (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '10px', color: 'var(--primary)' }}>
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c4.18 0 7.77-2.56 9.29-6.21-.83-.16-1.49-.82-1.65-1.65a2.5 2.5 0 0 1 0-4.28c.16-.83.82-1.49 1.65-1.65C19.77 4.56 16.18 2 12 2z" />
+        <circle cx="8" cy="8" r="1.5" fill="currentColor" />
+        <circle cx="8" cy="16" r="1.5" fill="currentColor" />
+        <circle cx="14" cy="12" r="1.5" fill="currentColor" />
+        <polygon points="11 9.5 15 12 11 14.5 11 9.5" fill="currentColor" />
+    </svg>
+);
+
 const Home = () => {
     const navigate = useNavigate();
     
@@ -97,7 +164,6 @@ const Home = () => {
     };
 
     const handleVisitStore = (storeId) => {
-        console.log('Visiting store:', storeId);
         navigate(`/food-partner/profile/${storeId}`);
     };
 
@@ -227,9 +293,9 @@ const Home = () => {
         <div className="main-layout-container">
             {/* LEFT SIDEBAR NAVIGATION (Desktop & Tablet) */}
             <aside className="app-navigation-sidebar">
-                <div className="nav-brand" onClick={() => handleTabClick('home')}>
-                    <span>🍔</span>
-                    <span className="nav-brand-text">FoodView</span>
+                <div className="nav-brand" style={{ display: 'flex', alignItems: 'center' }}>
+                    <LogoIcon />
+                    <span className="nav-brand-text">BiteReels</span>
                 </div>
                 
                 <div className="nav-items-group">
@@ -237,7 +303,7 @@ const Home = () => {
                         className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
                         onClick={() => handleTabClick('home')}
                     >
-                        <span className="nav-item-icon">🏠</span>
+                        <span className="nav-item-icon"><HomeIcon active={activeTab === 'home'} /></span>
                         <span className="nav-item-text">Home Feed</span>
                     </button>
 
@@ -246,7 +312,7 @@ const Home = () => {
                             className={`nav-item ${activeTab === 'saved' ? 'active' : ''}`}
                             onClick={() => handleTabClick('saved')}
                         >
-                            <span className="nav-item-icon">🔖</span>
+                            <span className="nav-item-icon"><SavedIcon active={activeTab === 'saved'} /></span>
                             <span className="nav-item-text">Saved Videos</span>
                         </button>
                     )}
@@ -254,11 +320,11 @@ const Home = () => {
                     {session.loggedIn && session.role === 'partner' && (
                         <>
                             <Link className="nav-item" to={`/food-partner/profile/${session.partner?.id}`}>
-                                <span className="nav-item-icon">🏬</span>
+                                <span className="nav-item-icon"><StoreIcon /></span>
                                 <span className="nav-item-text">My Store</span>
                             </Link>
                             <Link className="nav-item" to="/create-food">
-                                <span className="nav-item-icon">➕</span>
+                                <span className="nav-item-icon"><PlusIcon /></span>
                                 <span className="nav-item-text">Add Dish</span>
                             </Link>
                         </>
@@ -267,11 +333,11 @@ const Home = () => {
                     {!session.loggedIn && (
                         <>
                             <Link className="nav-item" to="/user/login">
-                                <span className="nav-item-icon">👤</span>
+                                <span className="nav-item-icon"><UserIcon /></span>
                                 <span className="nav-item-text">Login as User</span>
                             </Link>
                             <Link className="nav-item" to="/food-partner/login">
-                                <span className="nav-item-icon">🏪</span>
+                                <span className="nav-item-icon"><StoreIcon /></span>
                                 <span className="nav-item-text">Login as Partner</span>
                             </Link>
                         </>
@@ -280,7 +346,7 @@ const Home = () => {
 
                 {session.loggedIn && (
                     <button className="nav-item logout" onClick={handleLogout} style={{ marginTop: 'auto' }}>
-                        <span className="nav-item-icon">🚪</span>
+                        <span className="nav-item-icon"><LogoutIcon /></span>
                         <span className="nav-item-text">Logout</span>
                     </button>
                 )}
@@ -292,7 +358,7 @@ const Home = () => {
                     className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
                     onClick={() => handleTabClick('home')}
                 >
-                    <span className="nav-item-icon">🏠</span>
+                    <span className="nav-item-icon"><HomeIcon active={activeTab === 'home'} /></span>
                 </button>
 
                 {session.loggedIn && session.role === 'user' && (
@@ -300,17 +366,17 @@ const Home = () => {
                         className={`nav-item ${activeTab === 'saved' ? 'active' : ''}`}
                         onClick={() => handleTabClick('saved')}
                     >
-                        <span className="nav-item-icon">🔖</span>
+                        <span className="nav-item-icon"><SavedIcon active={activeTab === 'saved'} /></span>
                     </button>
                 )}
 
                 {session.loggedIn && session.role === 'partner' && (
                     <>
                         <Link className="nav-item" to={`/food-partner/profile/${session.partner?.id}`}>
-                            <span className="nav-item-icon">🏬</span>
+                            <span className="nav-item-icon"><StoreIcon /></span>
                         </Link>
                         <Link className="nav-item" to="/create-food">
-                            <span className="nav-item-icon">➕</span>
+                            <span className="nav-item-icon"><PlusIcon /></span>
                         </Link>
                     </>
                 )}
@@ -318,17 +384,17 @@ const Home = () => {
                 {!session.loggedIn && (
                     <>
                         <Link className="nav-item" to="/user/login" title="Login as User">
-                            <span className="nav-item-icon">👤</span>
+                            <span className="nav-item-icon"><UserIcon /></span>
                         </Link>
                         <Link className="nav-item" to="/food-partner/login" title="Login as Partner">
-                            <span className="nav-item-icon">🏪</span>
+                            <span className="nav-item-icon"><StoreIcon /></span>
                         </Link>
                     </>
                 )}
 
                 {session.loggedIn && (
                     <button className="nav-item" onClick={handleLogout}>
-                        <span className="nav-item-icon">🚪</span>
+                        <span className="nav-item-icon"><LogoutIcon /></span>
                     </button>
                 )}
             </nav>
@@ -336,15 +402,6 @@ const Home = () => {
             {/* MAIN CONTENT AREA */}
             <main className="main-layout-content">
                 <div className="reels-container">
-                    {!session.loggedIn && (
-                        <div className="guest-top-banner">
-                            <p className="guest-banner-text">🍽️ Join FoodView today!</p>
-                            <div className="guest-banner-buttons">
-                                <Link className="guest-banner-link" to="/user/login">User Login</Link>
-                                <Link className="guest-banner-link partner" to="/food-partner/login">Partner Login</Link>
-                            </div>
-                        </div>
-                    )}
 
                     {videos.length > 0 ? (
                         videos.map((video, index) => {
@@ -382,7 +439,7 @@ const Home = () => {
                                                 className={`reel-action-btn ${video.isLiked ? 'liked' : ''}`}
                                                 onClick={() => handleLikeToggle(videoId, index)}
                                             >
-                                                ❤️
+                                                <HeartIcon filled={video.isLiked} />
                                             </button>
                                             <span className="action-count">{video.likeCount || 0}</span>
                                         </div>
@@ -392,7 +449,7 @@ const Home = () => {
                                                 className="reel-action-btn"
                                                 onClick={() => handleOpenComments(video)}
                                             >
-                                                💬
+                                                <CommentIcon />
                                             </button>
                                             <span className="action-count">{video.commentCount || 0}</span>
                                         </div>
@@ -402,7 +459,7 @@ const Home = () => {
                                                 className={`reel-action-btn ${video.isSaved ? 'saved' : ''}`}
                                                 onClick={() => handleSaveToggle(videoId, index)}
                                             >
-                                                🔖
+                                                <SavedIcon active={video.isSaved} />
                                             </button>
                                         </div>
                                     </div>
@@ -481,7 +538,7 @@ const Home = () => {
                                 })
                             ) : (
                                 <div className="comment-empty-state">
-                                    <div className="comment-empty-icon">💬</div>
+                                    <div className="comment-empty-icon"><CommentIcon /></div>
                                     <p>No comments yet. Be the first to say something!</p>
                                 </div>
                             )}

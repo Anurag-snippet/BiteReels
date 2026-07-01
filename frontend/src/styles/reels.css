@@ -240,8 +240,9 @@
 }
 
 .reel-action-btn.saved {
-    color: #eab308;
-    border-color: rgba(234, 179, 8, 0.3);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+    animation: savePop 0.35s ease-in-out;
 }
 
 .action-count {
@@ -634,4 +635,39 @@
     .guest-top-banner {
         display: none;
     }
+}
+
+/* Instagram-Style SVG styling and transitions */
+.reel-action-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), fill 0.25s ease;
+    display: block;
+}
+
+.reel-action-btn.liked svg {
+    fill: #ef4444;
+    stroke: #ef4444;
+}
+
+.reel-action-btn.saved svg {
+    fill: #ffffff;
+    stroke: #ffffff;
+}
+
+@keyframes savePop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.35); }
+    100% { transform: scale(1); }
+}
+
+.nav-item-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+    transition: stroke 0.25s ease, fill 0.25s ease;
 }

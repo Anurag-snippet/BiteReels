@@ -113,7 +113,6 @@ const CreateFood = () => {
                 withCredentials: true
             });
 
-            console.log('Upload success:', response.data);
             setMessage('Meal video uploaded successfully!');
             setIsError(false);
 

@@ -21,9 +21,6 @@ const UserLoginPage = () => {
       {
         withCredentials: true
       });
-
-      console.log(response.data);
-
       navigate("/");
       
     } catch (error) {

@@ -15,9 +15,7 @@ async function createFood(req, res) {
             return res.status(400).json({ message: "No video file provided" });
         }
 
-        console.log("createFood: Uploading to ImageKit, buffer size:", req.file.buffer.length);
         const fileUploadResult = await storageService.uploadFile(req.file.buffer, uuid());
-        console.log("createFood: ImageKit upload success:", fileUploadResult.url);
 
         const foodItem = await foodModel.create({
             name: req.body.name,

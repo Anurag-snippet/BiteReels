@@ -32,7 +32,6 @@ const FoodPartnerRegisterPage = () => {
       const response = await axios.post("http://localhost:3000/api/auth/food-partner/register", formData, {
         withCredentials: true
       });
-      console.log('Registration successful:', response.data);
       setMessage('Registration successful!');
       setIsError(false);
       navigate("/create-food");
