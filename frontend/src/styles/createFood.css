@@ -1,0 +1,346 @@
+/* createFood.css - Premium Glassmorphism & Mobile-First Approach */
+
+/* Base container / Page layout */
+.create-food-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px;
+  background: radial-gradient(circle at 50% 20%, rgba(239, 68, 68, 0.12) 0%, var(--bg) 80%);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Back button */
+.create-food-back-btn {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.create-food-back-btn:hover:not(:disabled) {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-muted);
+  transform: translateX(-4px);
+}
+
+/* Card layout - Glassmorphism, full width on mobile */
+.create-food-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  padding: 32px 20px;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+/* Badge */
+.create-food-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+/* Titles */
+.create-food-title {
+  font-size: 1.65rem;
+  margin: 0 0 8px 0;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.create-food-subtitle {
+  color: var(--text-muted);
+  margin: 0 0 28px 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* Form layout */
+.create-food-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-food-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.create-food-field label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.3px;
+}
+
+/* Inputs & Textareas */
+.create-food-field input[type="text"],
+.create-food-field textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  background: rgba(15, 23, 42, 0.15);
+  color: var(--text);
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.create-food-field input[type="text"]:focus,
+.create-food-field textarea:focus {
+  border-color: var(--primary);
+  background: rgba(15, 23, 42, 0.35);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.18);
+}
+
+.create-food-field textarea {
+  resize: vertical;
+  min-height: 96px;
+  line-height: 1.5;
+}
+
+/* Dropzone (Video File Upload Zone) */
+.create-food-dropzone {
+  border: 2px dashed var(--border);
+  border-radius: 16px;
+  padding: 36px 20px;
+  text-align: center;
+  background: rgba(15, 23, 42, 0.15);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.create-food-dropzone:hover,
+.create-food-dropzone.active {
+  border-color: var(--primary);
+  background: rgba(239, 68, 68, 0.04);
+  transform: scale(1.01);
+}
+
+.create-food-dropzone-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  margin-bottom: 4px;
+}
+
+.create-food-dropzone-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.create-food-dropzone-subtext {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Video Preview Block */
+.create-food-preview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+
+.create-food-video-preview {
+  width: 100%;
+  max-height: 220px;
+  border-radius: 12px;
+  background: #000;
+  object-fit: contain;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+}
+
+.create-food-file-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-sizing: border-box;
+  backdrop-filter: blur(8px);
+}
+
+.create-food-file-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 75%;
+}
+
+.create-food-remove-file {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.create-food-remove-file:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary-strong);
+}
+
+/* Status Notifications */
+.create-food-status {
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.create-food-status.error {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--primary);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.create-food-status.success {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/* Button & Loading States */
+.create-food-btn {
+  margin-top: 12px;
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.create-food-btn:hover:not(:disabled) {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.35);
+}
+
+.create-food-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.create-food-btn:disabled {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Loading Spinner Indicator */
+.spinner-ring {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* --- RESPONSIVE MEDIA QUERIES (Mobile-First Overrides) --- */
+
+/* Tablets and Up */
+@media (min-width: 768px) {
+  .create-food-page {
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .create-food-card {
+    width: min(100%, 580px);
+    padding: 48px;
+    margin-top: 0;
+    border-radius: 36px;
+  }
+
+  .create-food-title {
+    font-size: 1.95rem;
+  }
+
+  .create-food-video-preview {
+    max-height: 280px;
+  }
+
+  .create-food-dropzone {
+    padding: 48px 32px;
+  }
+}

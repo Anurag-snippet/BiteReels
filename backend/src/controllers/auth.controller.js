@@ -131,6 +131,12 @@ async function registerFoodPartner(req, res) {
             contactName
         })
 
+        const token = jwt.sign({
+            id: foodPartner._id,
+        }, process.env.JWT_SECRET)
+
+        res.cookie("token", token)
+
         res.status(201).json({
             message: "Food Partner registered successfully",
             foodPartner:{
@@ -209,11 +215,53 @@ function logoutFoodPartner(req, res) {
     }
 }
 
+async function getMe(req, res) {
+    try {
+        const token = req.cookies.token;
+        if (!token) {
+            return res.status(200).json({ loggedIn: false });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        
+        const user = await userModel.findById(decoded.id);
+        if (user) {
+            return res.status(200).json({
+                loggedIn: true,
+                role: 'user',
+                user: {
+                    id: user._id,
+                    fullName: user.fullName,
+                    email: user.email
+                }
+            });
+        }
+
+        const foodPartner = await foodPartnerModel.findById(decoded.id);
+        if (foodPartner) {
+            return res.status(200).json({
+                loggedIn: true,
+                role: 'partner',
+                partner: {
+                    id: foodPartner._id,
+                    name: foodPartner.name,
+                    email: foodPartner.email
+                }
+            });
+        }
+
+        return res.status(200).json({ loggedIn: false });
+    } catch (error) {
+        return res.status(200).json({ loggedIn: false, error: error.message });
+    }
+}
+
 module.exports = {
     registerUser,
     loginUser,
     logoutUser,
     registerFoodPartner,
     loginFoodPartner,
-    logoutFoodPartner
+    logoutFoodPartner,
+    getMe
 }

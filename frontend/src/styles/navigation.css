@@ -1,0 +1,179 @@
+/* navigation.css - Mobile First Navigation Styles */
+
+/* --- MOBILE FIRST: Bottom Navigation Bar (screens < 768px) --- */
+.app-navigation-sidebar {
+  display: none; /* Hide sidebar on mobile */
+}
+
+.app-navigation-bottom {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(var(--surface-rgb, 17, 24, 39), 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  z-index: 100;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+/* Common Nav Item Styling */
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-item-icon {
+  font-size: 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-item-text {
+  display: none; /* Hide text label on mobile bottom bar for clean look */
+}
+
+.nav-item:hover {
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.nav-item:active {
+  transform: scale(0.95);
+}
+
+.nav-item.active {
+  color: var(--primary);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+/* Adjust page containers for mobile bottom bar padding */
+.main-layout-content {
+  padding-bottom: 64px; /* Ensure content doesn't get hidden behind bottom nav */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* --- TABLETS & DESKTOPS: Left Sidebar (screens >= 768px) --- */
+@media (min-width: 768px) {
+  .app-navigation-bottom {
+    display: none; /* Hide bottom nav */
+  }
+
+  .app-navigation-sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 72px; /* Slim sidebar for tablets */
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 8px;
+    z-index: 100;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 32px;
+    cursor: pointer;
+  }
+
+  .nav-brand-text {
+    display: none; /* Hide brand text on tablet width */
+  }
+
+  .nav-items-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .nav-item {
+    flex-direction: row;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 12px;
+    justify-content: center;
+  }
+
+  /* Offset main content layout for sidebar */
+  .main-layout-content {
+    padding-bottom: 0;
+    padding-left: 72px; /* Prevent overlap with slim sidebar */
+  }
+}
+
+/* Large Screens / Desktops (screens >= 1024px) */
+@media (min-width: 1024px) {
+  .app-navigation-sidebar {
+    width: 240px; /* Full-width sidebar for desktop */
+    padding: 32px 16px 24px 16px;
+    align-items: flex-start;
+  }
+
+  .nav-brand-text {
+    display: inline; /* Show brand text */
+    margin-left: 8px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 12px;
+  }
+
+  .nav-items-group {
+    align-items: flex-start;
+  }
+
+  .nav-item {
+    width: 100%;
+    height: auto;
+    padding: 12px 16px;
+    border-radius: 12px;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  .nav-item-text {
+    display: block; /* Show text labels */
+    font-size: 0.95rem;
+  }
+
+  .main-layout-content {
+    padding-left: 240px; /* Offset for full-width sidebar */
+  }
+}

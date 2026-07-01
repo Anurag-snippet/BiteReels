@@ -14,14 +14,14 @@ router.post('/',
     upload.single('video'), 
     foodController.createFood);
 
-// GET /api/food/ [protected]
+// GET /api/food/ [protected for actions, public/optional for feed]
 router.get('/', 
-    authMiddleware.authUserMiddleware, 
+    authMiddleware.optionalAuthUserMiddleware, 
     foodController.getFoodItems);
 
-// GET /api/food/partner/:id [protected]
+// GET /api/food/partner/:id [accessible by both users and food partners]
 router.get('/partner/:id',
-    authMiddleware.authUserMiddleware,
+    authMiddleware.authAnyMiddleware,
     foodController.getFoodPartnerProfile);
 
 module.exports = router;
