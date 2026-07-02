@@ -10,9 +10,8 @@ router.post('/:foodId',
     commentController.addComment
 );
 
-// GET /api/comment/:foodId [protected]
+// GET /api/comment/:foodId [public]
 router.get('/:foodId', 
-    authMiddleware.authUserMiddleware, 
     commentController.getComments
 );
 
