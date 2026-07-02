@@ -93,7 +93,7 @@ const Home = () => {
 
     // Fetch user session on mount
     useEffect(() => {
-        axios.get('http://localhost:3000/api/auth/me', { withCredentials: true })
+        axios.get('https://bitereels-backend-kcti.onrender.com/api/auth/me', { withCredentials: true })
             .then(response => {
                 if (response.data.loggedIn) {
                     setSession(response.data);
@@ -109,8 +109,8 @@ const Home = () => {
     // Fetch feed or saved items
     const fetchVideos = (tab) => {
         const endpoint = tab === 'home' 
-            ? 'http://localhost:3000/api/food' 
-            : 'http://localhost:3000/api/save/items';
+            ? 'https://bitereels-backend-kcti.onrender.com/api/food' 
+            : 'https://bitereels-backend-kcti.onrender.com/api/save/items';
 
         axios.get(endpoint, { withCredentials: true })
             .then(response => {
@@ -186,7 +186,7 @@ const Home = () => {
     const handleLikeToggle = async (videoId, index) => {
         if (!checkAuthAndRun('like this dish', 'user')) return;
         try {
-            const response = await axios.post(`http://localhost:3000/api/likes/toggle/${videoId}`, {}, { withCredentials: true });
+            const response = await axios.post(`https://bitereels-backend-kcti.onrender.com/api/likes/toggle/${videoId}`, {}, { withCredentials: true });
             const { isLiked, likeCount } = response.data;
             
             // Update video item in state locally
@@ -200,7 +200,7 @@ const Home = () => {
     const handleSaveToggle = async (videoId, index) => {
         if (!checkAuthAndRun('save this dish', 'user')) return;
         try {
-            const response = await axios.post(`http://localhost:3000/api/save/toggle/${videoId}`, {}, { withCredentials: true });
+            const response = await axios.post(`https://bitereels-backend-kcti.onrender.com/api/save/toggle/${videoId}`, {}, { withCredentials: true });
             const { isSaved } = response.data;
 
             // Update video item in state locally
@@ -222,7 +222,7 @@ const Home = () => {
         setCommentsList([]);
         
         try {
-            const response = await axios.get(`http://localhost:3000/api/comment/${video._id || video.id}`, { withCredentials: true });
+            const response = await axios.get(`https://bitereels-backend-kcti.onrender.com/api/comment/${video._id || video.id}`, { withCredentials: true });
             setCommentsList(response.data.comments || []);
         } catch (error) {
             console.error('Error loading comments:', error);
@@ -241,7 +241,7 @@ const Home = () => {
         const videoId = selectedVideoComments._id || selectedVideoComments.id;
 
         try {
-            const response = await axios.post(`http://localhost:3000/api/comment/${videoId}`, {
+            const response = await axios.post(`https://bitereels-backend-kcti.onrender.com/api/comment/${videoId}`, {
                 text: newCommentText
             }, { withCredentials: true });
 
@@ -264,8 +264,8 @@ const Home = () => {
     const handleLogout = async () => {
         try {
             const logoutUrl = session.role === 'partner' 
-                ? 'http://localhost:3000/api/auth/food-partner/logout'
-                : 'http://localhost:3000/api/auth/user/logout';
+                ? 'https://bitereels-backend-kcti.onrender.com/api/auth/food-partner/logout'
+                : 'https://bitereels-backend-kcti.onrender.com/api/auth/user/logout';
                 
             await axios.post(logoutUrl, {}, { withCredentials: true });
             setSession({ loggedIn: false, role: null, user: null, partner: null });

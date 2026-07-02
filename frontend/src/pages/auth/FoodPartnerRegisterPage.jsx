@@ -29,7 +29,7 @@ const FoodPartnerRegisterPage = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/api/auth/food-partner/register", formData, {
+      const response = await axios.post("https://bitereels-backend-kcti.onrender.com/api/auth/food-partner/register", formData, {
         withCredentials: true
       });
       setMessage('Registration successful!');
