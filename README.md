@@ -1,5 +1,7 @@
 # BiteReels 🍔🎬
 
+**Live Demo:** [https://bitereels.onrender.com](https://bitereels.onrender.com)
+
 A full-stack, short-form food video social network inspired by Instagram Reels and Zomato. Built for food lovers to discover delicacies through highly interactive vertical reels and for food partners/restaurants to share their culinary creations.
 
 ## 🚀 Features
