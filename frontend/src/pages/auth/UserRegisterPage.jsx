@@ -34,6 +34,9 @@ const UserRegisterPage = () => {
   return (
     <div className="auth-page">
       <div className="auth-card">
+        <button className="auth-back-btn" onClick={() => navigate('/')}>
+          ← Back to Feed
+        </button>
         <div className="auth-badge">🍽️ User account</div>
         <h1 className="auth-title">Create your account</h1>
         <p className="auth-subtitle">Join with a simple sign-up and start exploring your next favorite meal.</p>

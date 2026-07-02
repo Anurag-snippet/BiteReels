@@ -31,6 +31,9 @@ const UserLoginPage = () => {
   return (
     <div className="auth-page">
       <div className="auth-card">
+        <button className="auth-back-btn" onClick={() => navigate('/')}>
+          ← Back to Feed
+        </button>
         <div className="auth-badge">🔐 Welcome back</div>
         <h1 className="auth-title">Sign in to continue</h1>
         <p className="auth-subtitle">A calm and quick login experience for your everyday cravings.</p>

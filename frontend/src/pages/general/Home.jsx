@@ -429,6 +429,16 @@ const Home = () => {
                                         playsInline
                                         preload="auto"
                                         onLoadedData={() => handleVideoLoad(videoId)}
+                                        onLoadedMetadata={() => handleVideoLoad(videoId)}
+                                        onCanPlay={() => handleVideoLoad(videoId)}
+                                        onClick={(e) => {
+                                            const videoEl = e.currentTarget;
+                                            if (videoEl.paused) {
+                                                videoEl.play().catch((err) => console.log('Play failed:', err));
+                                            } else {
+                                                videoEl.pause();
+                                            }
+                                        }}
                                         onError={(e) => console.log('Error loading video:', videoSrc, e)}
                                     />
                                     

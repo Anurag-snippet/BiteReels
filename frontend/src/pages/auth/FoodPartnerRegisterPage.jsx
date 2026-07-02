@@ -45,6 +45,9 @@ const FoodPartnerRegisterPage = () => {
   return (
     <div className="auth-page">
       <div className="auth-card">
+        <button className="auth-back-btn" onClick={() => navigate('/')}>
+          ← Back to Feed
+        </button>
         <div className="auth-badge">🏪 Food partner</div>
         <h1 className="auth-title">Register your business</h1>
         <p className="auth-subtitle">Show your dishes to more customers with a simple onboarding flow.</p>

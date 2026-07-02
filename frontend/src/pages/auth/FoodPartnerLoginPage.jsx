@@ -30,6 +30,9 @@ const FoodPartnerLoginPage = () => {
   return (
     <div className="auth-page">
       <div className="auth-card">
+        <button className="auth-back-btn" onClick={() => navigate('/')}>
+          ← Back to Feed
+        </button>
         <div className="auth-badge">📦 Partner access</div>
         <h1 className="auth-title">Welcome back, partner</h1>
         <p className="auth-subtitle">Manage your menu and orders with a streamlined sign-in experience.</p>

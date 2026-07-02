@@ -101,3 +101,23 @@
 .auth-link:hover {
   text-decoration: underline;
 }
+
+.auth-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 20px;
+  transition: color 0.2s ease;
+}
+
+.auth-back-btn:hover {
+  color: var(--primary);
+}
+
