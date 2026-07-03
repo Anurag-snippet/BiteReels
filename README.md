@@ -2,13 +2,13 @@
 
 **Live Demo:** [https://bitereels.onrender.com](https://bitereels.onrender.com)
 
-A full-stack, short-form food video social network inspired by Instagram Reels and Zomato. Built for food lovers to discover delicacies through highly interactive vertical reels and for food partners/restaurants to share their culinary creations.
+A full-stack, short-form food video social network inspired by Instagram Reels. Built for food lovers to discover delicacies through highly interactive vertical reels and for food partners/restaurants to share their culinary creations.
 
 ## 🚀 Features
 
 - **Endless Food Feed**: Vertical scrolling food reel feed with autoplay on intersection, fully optimized for all devices (mobile, tablet, laptop, and desktop).
 - **Instagram-Style Visuals & Interactions**:
-  - Custom outline and filled vector SVG icons mirroring Instagram.
+  - Custom outline and filled vector SVG icons.
   - Haptic-style keyframe animations: heart-beat bounce for Likes, and pop scale for Saves.
   - Interactive slide-up bottom drawer for reading and posting comments.
 - **Dual-Auth Architecture**:
@@ -37,7 +37,7 @@ A full-stack, short-form food video social network inspired by Instagram Reels a
 ## 📦 Project Structure
 
 ```text
-zomatoClone/
+BiteReels/
 ├── backend/            # Express server API & MongoDB models
 │   ├── src/            # Controllers, models, routes, middleware
 │   ├── .env.example    # Environment variables template
