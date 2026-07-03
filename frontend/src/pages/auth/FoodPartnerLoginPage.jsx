@@ -14,7 +14,7 @@ const FoodPartnerLoginPage = () => {
     const password = e.target.elements.password.value;
 
     try {
-      const response = await axios.post("https://bitereels-backend-kcti.onrender.com/api/auth/food-partner/login", {
+      const response = await axios.post("https://bitereels-backend-iuva.onrender.com/api/auth/food-partner/login", {
         email,
         password
       },

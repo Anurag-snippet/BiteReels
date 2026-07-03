@@ -14,7 +14,7 @@ const Profile = () => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`https://bitereels-backend-kcti.onrender.com/api/food/partner/${id}`, { withCredentials: true })
+        axios.get(`https://bitereels-backend-iuva.onrender.com/api/food/partner/${id}`, { withCredentials: true })
             .then(response => {
                 setPartner(response.data.partner);
                 setVideos(response.data.foodItems || []);

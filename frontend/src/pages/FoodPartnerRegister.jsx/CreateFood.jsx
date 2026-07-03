@@ -106,7 +106,7 @@ const CreateFood = () => {
         formData.append('video', videoFile);
 
         try {
-            const response = await axios.post("https://bitereels-backend-kcti.onrender.com/api/food", formData, {
+            const response = await axios.post("https://bitereels-backend-iuva.onrender.com/api/food", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
