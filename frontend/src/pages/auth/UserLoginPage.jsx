@@ -10,7 +10,7 @@ const UserLoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const email = e.target.elements.email.value; 
+    const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
 
     try {
@@ -18,11 +18,11 @@ const UserLoginPage = () => {
         email,
         password
       },
-      {
-        withCredentials: true
-      });
+        {
+          withCredentials: true
+        });
       navigate("/");
-      
+
     } catch (error) {
       console.error(error.response?.data || error.message);
     }

@@ -21,11 +21,11 @@ const UserRegisterPage = () => {
         email,
         password
       },
-      {
-        withCredentials: true
-      });
+        {
+          withCredentials: true
+        });
       navigate("/");
-      
+
     } catch (error) {
       console.error(error.response?.data || error.message);
     }

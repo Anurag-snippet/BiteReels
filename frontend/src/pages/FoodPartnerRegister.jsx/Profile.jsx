@@ -64,8 +64,8 @@ const Profile = () => {
                         <p style={{ color: 'var(--primary-strong)', fontSize: '1.2rem', fontWeight: '600', margin: '0 0 16px 0' }}>
                             {error || 'Partner not found'}
                         </p>
-                        <button 
-                            className="profile-back-btn" 
+                        <button
+                            className="profile-back-btn"
                             style={{ margin: '0 auto', display: 'block' }}
                             onClick={() => navigate('/')}
                         >
@@ -125,16 +125,16 @@ const Profile = () => {
                 <div className="profile-videos-grid">
                     {videos.length > 0 ? (
                         videos.map((video) => (
-                            <div 
-                                key={video._id} 
+                            <div
+                                key={video._id}
                                 className="profile-video-card"
                                 onMouseEnter={handleMouseEnter}
                                 onMouseLeave={handleMouseLeave}
                             >
-                                <video 
-                                    src={video.video} 
-                                    muted 
-                                    loop 
+                                <video
+                                    src={video.video}
+                                    muted
+                                    loop
                                     playsInline
                                     preload="metadata"
                                 />

@@ -18,9 +18,9 @@ const FoodPartnerLoginPage = () => {
         email,
         password
       },
-      {
-        withCredentials: true
-      });
+        {
+          withCredentials: true
+        });
       navigate("/create-food");
     } catch (error) {
       console.error(error.response?.data || error.message);

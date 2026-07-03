@@ -41,7 +41,7 @@ const CreateFood = () => {
         setVideoFile(file);
         setIsError(false);
         setMessage('');
-        
+
         // Create local object URL for instant preview
         const url = URL.createObjectURL(file);
         setVideoPreviewUrl(url);
@@ -143,8 +143,8 @@ const CreateFood = () => {
 
     return (
         <div className="create-food-page">
-            <button 
-                className="create-food-back-btn" 
+            <button
+                className="create-food-back-btn"
                 onClick={() => navigate('/')}
                 disabled={isSubmitting}
             >
@@ -161,10 +161,10 @@ const CreateFood = () => {
                 <form className="create-food-form" onSubmit={handleSubmit}>
                     <div className="create-food-field">
                         <label htmlFor="food-name">Dish Name</label>
-                        <input 
-                            id="food-name" 
-                            type="text" 
-                            placeholder="e.g., Cheesy Margherita Pizza" 
+                        <input
+                            id="food-name"
+                            type="text"
+                            placeholder="e.g., Cheesy Margherita Pizza"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
@@ -174,9 +174,9 @@ const CreateFood = () => {
 
                     <div className="create-food-field">
                         <label htmlFor="food-desc">Description (Optional)</label>
-                        <textarea 
-                            id="food-desc" 
-                            placeholder="Describe the ingredients, taste, or any special offers..." 
+                        <textarea
+                            id="food-desc"
+                            placeholder="Describe the ingredients, taste, or any special offers..."
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             disabled={isSubmitting}
@@ -185,17 +185,17 @@ const CreateFood = () => {
 
                     <div className="create-food-field">
                         <label>Dish Video Showcase</label>
-                        <input 
+                        <input
                             ref={fileInputRef}
-                            type="file" 
-                            accept="video/*" 
+                            type="file"
+                            accept="video/*"
                             onChange={handleFileChange}
                             style={{ display: 'none' }}
                             disabled={isSubmitting}
                         />
 
                         {!videoFile ? (
-                            <div 
+                            <div
                                 className={`create-food-dropzone ${dragActive ? 'active' : ''}`}
                                 onDragEnter={handleDrag}
                                 onDragOver={handleDrag}
@@ -212,10 +212,10 @@ const CreateFood = () => {
                         ) : (
                             <div className="create-food-preview-container">
                                 {videoPreviewUrl && (
-                                    <video 
-                                        className="create-food-video-preview" 
-                                        src={videoPreviewUrl} 
-                                        controls 
+                                    <video
+                                        className="create-food-video-preview"
+                                        src={videoPreviewUrl}
+                                        controls
                                         muted
                                     />
                                 )}
@@ -223,8 +223,8 @@ const CreateFood = () => {
                                     <span className="create-food-file-name" title={videoFile.name}>
                                         📄 {videoFile.name}
                                     </span>
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         className="create-food-remove-file"
                                         onClick={handleRemoveFile}
                                         disabled={isSubmitting}
@@ -242,9 +242,9 @@ const CreateFood = () => {
                         </div>
                     )}
 
-                    <button 
-                        className="create-food-btn" 
-                        type="submit" 
+                    <button
+                        className="create-food-btn"
+                        type="submit"
                         disabled={isSubmitting}
                     >
                         {isSubmitting ? (
