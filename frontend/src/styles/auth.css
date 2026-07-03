@@ -105,19 +105,28 @@
 .auth-back-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: none;
+  gap: 8px;
+  background-color: #ff5722;
+  color: #fff;
   border: none;
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  padding: 0;
-  margin-bottom: 20px;
-  transition: color 0.2s ease;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-decoration: none;
 }
 
 .auth-back-btn:hover {
-  color: var(--primary);
+  background-color: #e64a19;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.auth-back-btn:active {
+  transform: scale(0.95);
 }
 
