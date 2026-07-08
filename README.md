@@ -48,40 +48,6 @@ BiteReels/
     ├── public/         # Static assets
     └── package.json
 ```
-
-## 🛠️ Getting Started
-
-### Prerequisites
-- Node.js (v18+ recommended)
-- npm or yarn
-- MongoDB instance (Local or MongoDB Atlas)
-
-### 1. Setup Backend
-```bash
-cd backend
-npm install
-```
-Create a `.env` file in the `backend` directory based on `.env.example` and configure your environment variables:
-```env
-PORT=3000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-IMAGEKIT_PUBLIC_KEY=your_imagekit_public_key
-IMAGEKIT_PRIVATE_KEY=your_imagekit_private_key
-IMAGEKIT_URL_ENDPOINT=your_imagekit_url_endpoint
-```
-Start the backend server:
-```bash
-npm run dev
-```
-
-### 2. Setup Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
